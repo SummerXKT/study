@@ -49,5 +49,35 @@
         (use "git add <file>..." to include in what will be committed)
                 "git\345\210\206\346\224\257"
                 "git\345\221\275\344\273\244"       --》说明文件仍然处于工作区，未被Git追踪
-        
 
+
+    提交完成后查看状态：$ git status
+                        On branch master
+                        nothing to commit, working tree clean
+## 3.6，修改文件
+修改完代码后：  
+    $ git status
+    On branch master
+        hanges not staged for commit:
+        (use "git add <file>..." to update what will be committed)
+        (use "git restore <file>..." to discard changes in working directory)
+                modified:   "git\345\221\275\344\273\244"            ————》这行为红色代表这次修改还未添加到暂存区
+    此时需要重复添加暂存区，提交操作即可
+    $ Git reflog
+    41a900e (HEAD -> master) HEAD@{0}: commit: Git命令学习——提交至本地仓库-第一次修改      ————》此时指针指向第三次修改
+    405e4bc HEAD@{1}: commit: Git命令学习——提交至本地仓库
+    2e669d3 HEAD@{2}: commit (initial): Git命令学习——提交至本地仓库
+## 3.7,版本穿梭
+### 1，查看历史版本
+    git reflog 查看版本信息
+    git log    查看脚本详细信息
+### 2，版本穿梭
+    基本语法：git reset --hard 版本号
+    结果：$ git reset --hard 405e4bc7957c27f67ca067ca10028c7db0cc67cd
+            HEAD is now at 405e4bc Git命令学习——提交至本地仓库
+        $ git log git分支
+        commit 405e4bc7957c27f67ca067ca10028c7db0cc67cd (HEAD -> master)     此时已经变成了之前的版本
+        Author: XC <2213065152@qq.com>
+        Date:   Mon Jan 30 14:00:16 2023 +0800
+
+        Git命令学习——提交至本地仓库
